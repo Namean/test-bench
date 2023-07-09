@@ -1,0 +1,21 @@
+h1 { text-align: center }
+h3 {
+	text-align: center;
+}
+
+
+.panel {
+	border: solid 1px black;
+
+}
+
+.panel button {
+	position: absolute;
+}
+
+
+p {
+	text-align: center;
+	width: 32rem;
+	padding: 40px;
+}
