@@ -1,0 +1,13 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+label {
+  margin-left: 20px;
+}
+
+input {
+  margin-bottom: 20px;
+}
