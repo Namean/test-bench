@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+
 const Square = () => {
   const [isRed, setIsRed] = useState(false);
   useEffect(() => {}, [isRed, setIsRed]); // Re-render when style changes;
