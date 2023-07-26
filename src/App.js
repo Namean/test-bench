@@ -2,10 +2,24 @@ import "./styles/App.css";
 import "./styles/FormStyle.css";
 //import './styles/main.css';
 // import { useState, useEffect } from "react";
+import "./styles/Employees.css";
 import TabContainer from "./components/TabContainer.component";
-
+// import inc from "./lib/inc";
 import Accordion from "./react.dev/sharing-state-between-components/Accordion.component";
 import { useState, useEffect } from "react";
+import { Post } from "../src/lib/Post";
+import employees from "./data/employees";
+const useFetch = (url) => {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => setData(data));
+  }, [url]);
+
+  return [data];
+};
 
 const RadioButtons = () => {
   return (
@@ -60,29 +74,6 @@ const Form = () => {
 };
 
 // http://172.16.150.190:3001/user
-async function Post(url, details) {
-  var formBody = [];
-  for (var property in details) {
-    var encodedKey = encodeURIComponent(property);
-    var encodedValue = encodeURIComponent(details[property]);
-    formBody.push(encodedKey + "=" + encodedValue);
-  }
-  formBody = formBody.join("&");
-
-  const response = await fetch(url, {
-    method: "POST", // *GET, POST, PUT, DELETE, etc.
-    mode: "cors", // no-cors, *cors, same-origin
-    cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-    credentials: "same-origin", // include, *same-origin, omit
-    headers: {
-      // "Content-Type": "application/json",
-      "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
-    },
-    redirect: "follow", // manual, *follow, error
-    referrerPolicy: "no-referrer", // no-referrer, \*no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-    body: formBody, // body data type must match "Content-Type" header
-  });
-}
 
 function MyForm() {
   const [inputs, setInputs] = useState({});
@@ -126,12 +117,112 @@ function MyForm() {
   );
 }
 
-const App = () => {
+const Employees = () => {
+  const url1 = "https://jsonplaceholder.typicode.com/todos";
+  const url2 = "http://172.16.150.190:3001/employees";
+  // const [data] = useFetch(url2);
+  const data = employees;
+
+  return (
+    <div className="container">
+      {data &&
+        data.map((idx, index) => {
+          return (
+            <>
+              <li key={index} id={idx.EmployeeId}>
+                {idx.FirstName} {idx.LastName}
+              </li>
+              <p>
+                {idx.Phone}, {idx.Fax}
+              </p>
+            </>
+          );
+        })}
+    </div>
+  );
+};
+
+const Home = () => {
+  const url1 = "https://jsonplaceholder.typicode.com/todos";
+  const url2 = "http://172.16.150.190:3001/employees";
+  const [data] = useFetch(url2);
+
   return (
     <>
-      <MyForm />
+      {data &&
+        data.map((idx, index) => {
+          return (
+            <p key={index} id={idx.EmployeeId}>
+              {idx.FirstName} {idx.LastName}
+            </p>
+          );
+        })}
     </>
   );
+};
+
+function Counter() {
+  const [count, setCount] = useState(1);
+  const [calculation, setCalculation] = useState(0);
+  const url2 = "http://172.16.150.190:3001/employees";
+  // const [data] = useFetch(url2);
+  const data = employees;
+  useEffect(() => {
+    setCalculation(() => count * 2);
+  }, [count]); // <- add the count variable here
+
+  return (
+    <>
+      <p>Count: {count}</p>
+      <p>Calculation: {calculation}</p>
+      <button
+        onClick={() =>
+          setCount((c) => {
+            if (c === 1) {
+              return data.length;
+            } else {
+              return c - 1;
+            }
+          })
+        }
+      >
+        DECREMENT
+      </button>
+      <button
+        id="inc"
+        onClick={() =>
+          setCount((c) => {
+            if (c === data.length) {
+              return 1;
+            } else {
+              return c + 1;
+            }
+          })
+        }
+      >
+        INCREMENT
+      </button>
+      <div>
+        {data &&
+          data.map((idx, index) => {
+            return (
+              <>
+                <li
+                  key={idx.EmployeeId}
+                  style={idx.EmployeeId <= count ? {} : { display: "none" }}
+                >
+                  {idx.FirstName}
+                </li>
+              </>
+            );
+          })}
+      </div>
+    </>
+  );
+}
+
+const App = () => {
+  return <Counter />;
 };
 
 export default App;

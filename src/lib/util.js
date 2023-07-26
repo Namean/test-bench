@@ -30,17 +30,32 @@ class Controller {
   }
 
   // methods...
+  findCity(cityName) {
+    let city = cityName.toLowerCase().trim();
+    let foundCity;
+    try {
+      foundCity = this.cities.filter((idx) => city === idx.city.toLowerCase());
+    } catch (error) {
+      console.error(error);
+    }
+    return foundCity;
+  }
+
   selectCity(cityName) {
     let result = this.cities.filter(
       (idx) => idx.city.toLowerCase() === cityName.toLowerCase()
     )[0];
+
     result.active = true;
+
     if (this.memory.initalized === false) {
       this.memory.current = result.city;
       this.memory.initalized = true;
     } else if (this.memory.initalized === true) {
       this.memory.previous = this.memory.current;
-      let prevCity = this.cities.filter((idx) => idx.city.toLowerCase() === this.memory.previous.toLowerCase())[0]
+      let prevCity = this.cities.filter(
+        (idx) => idx.city.toLowerCase() === this.memory.previous.toLowerCase()
+      )[0];
       prevCity.active = false;
       this.memory.current = result.city;
     }

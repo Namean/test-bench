@@ -69,6 +69,8 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
+[Ionicons - Usage](https://ionic.io/ionicons/usage)
+
 had to install body-parser
 [Express.js req.body undefined](https://stackoverflow.com/questions/9177049/express-js-req-body-undefined)
 
