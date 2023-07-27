@@ -1,228 +1,437 @@
+// [:: LIBRARIES ::]
+import { useState } from "react";
+
+// [:: STYLES ::]
 import "./styles/App.css";
 import "./styles/FormStyle.css";
-//import './styles/main.css';
-// import { useState, useEffect } from "react";
+
 import "./styles/Employees.css";
-import TabContainer from "./components/TabContainer.component";
-// import inc from "./lib/inc";
-import Accordion from "./react.dev/sharing-state-between-components/Accordion.component";
-import { useState, useEffect } from "react";
-import { Post } from "../src/lib/Post";
-import employees from "./data/employees";
-const useFetch = (url) => {
-  const [data, setData] = useState(null);
 
-  useEffect(() => {
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => setData(data));
-  }, [url]);
+// [:: COMPONENTS ::]
+// import TabContainer from "./components/TabContainer.component";
 
-  return [data];
+// [:: UTILS ::]
+// import { Post } from "../src/lib/Post";
+
+// [:: HOOKS ::]
+// import employees from "./data/employees";
+
+const flashcardStyle = {
+  border: "solid 1px black",
+  padding: "20px",
+  width: "auto",
+  // margin: "10px 10px 10px 10px",
+  borderRadius: "8px",
+  WebkitBoxShadow: "10px 14px 6px 1px rgba(0,0,0,0.47)",
+  MozBoxShadow: "10px 14px 6px 1px rgba(0,0,0,0.47)",
+  boxShadow: "10px 14px 6px 1px rgba(0,0,0,0.47)",
 };
 
-const RadioButtons = () => {
-  return (
-    <>
-      <form>
-        <input type="radio" id="html" name="fav_language" value="HTML" />
-        <label htmlFor="html">HTML</label>
-        <br />
-        <input type="radio" id="css" name="fav_language" value="CSS" />
-        <label htmlFor="css">CSS</label>
-        <br />
-        <input
-          type="radio"
-          id="javascript"
-          name="fav_language"
-          value="JavaScript"
-        />
-        <label htmlFor="javascript">JavaScript</label>
-      </form>
-    </>
-  );
-};
+const FlashCard = () => {
+  const kanjiStyle = {
+    fontSize: "120px",
+    position: "relative",
+    left: "60px",
+  };
 
-const Form = () => {
-  const [firstName, setFirstName] = useState("");
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    alert(`The name you entered ${firstName}`);
+  const furiganaStyle = {
+    position: "relative",
+    top: "-10",
+    left: "90px",
   };
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="first_name">First name:</label>
-        <input
-          onChange={(e) => setFirstName(e.target.value)}
-          type={"text"}
-          id="first_name"
-          name="first_name"
-        />
-        <br />
-        <label htmlFor="first_name">First name:</label>
-        <input type={"text"} id="first_name" name="first_name" />
-        <br />
-        <br />
-        <br />
-        <input type="submit" value="submit" />
-      </form>
-    </>
-  );
-};
-
-// http://172.16.150.190:3001/user
-
-function MyForm() {
-  const [inputs, setInputs] = useState({});
-
-  const handleChange = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
-    setInputs((values) => ({ ...values, [name]: value }));
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    alert(` ${Object.keys(inputs)}, \n ${Object.values(inputs)} `);
-  };
-
-  return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Enter your name:
-        <input
-          type="text"
-          name="username"
-          value={inputs.username || ""}
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        Enter your age:
-        <input
-          type="number"
-          name="age"
-          value={inputs.age || ""}
-          onChange={handleChange}
-        />
-      </label>
-      <input
-        type="submit"
-        onClick={(event) => Post("http://172.16.150.190:3001/users", inputs)}
-      />
-    </form>
-  );
-}
-
-const Employees = () => {
-  const url1 = "https://jsonplaceholder.typicode.com/todos";
-  const url2 = "http://172.16.150.190:3001/employees";
-  // const [data] = useFetch(url2);
-  const data = employees;
-
-  return (
-    <div className="container">
-      {data &&
-        data.map((idx, index) => {
-          return (
-            <>
-              <li key={index} id={idx.EmployeeId}>
-                {idx.FirstName} {idx.LastName}
-              </li>
-              <p>
-                {idx.Phone}, {idx.Fax}
-              </p>
-            </>
-          );
-        })}
-    </div>
-  );
-};
-
-const Home = () => {
-  const url1 = "https://jsonplaceholder.typicode.com/todos";
-  const url2 = "http://172.16.150.190:3001/employees";
-  const [data] = useFetch(url2);
-
-  return (
-    <>
-      {data &&
-        data.map((idx, index) => {
-          return (
-            <p key={index} id={idx.EmployeeId}>
-              {idx.FirstName} {idx.LastName}
-            </p>
-          );
-        })}
-    </>
-  );
-};
-
-function Counter() {
-  const [count, setCount] = useState(1);
-  const [calculation, setCalculation] = useState(0);
-  const url2 = "http://172.16.150.190:3001/employees";
-  // const [data] = useFetch(url2);
-  const data = employees;
-  useEffect(() => {
-    setCalculation(() => count * 2);
-  }, [count]); // <- add the count variable here
-
-  return (
-    <>
-      <p>Count: {count}</p>
-      <p>Calculation: {calculation}</p>
-      <button
-        onClick={() =>
-          setCount((c) => {
-            if (c === 1) {
-              return data.length;
-            } else {
-              return c - 1;
-            }
-          })
-        }
-      >
-        DECREMENT
-      </button>
-      <button
-        id="inc"
-        onClick={() =>
-          setCount((c) => {
-            if (c === data.length) {
-              return 1;
-            } else {
-              return c + 1;
-            }
-          })
-        }
-      >
-        INCREMENT
-      </button>
-      <div>
-        {data &&
-          data.map((idx, index) => {
-            return (
-              <>
-                <li
-                  key={idx.EmployeeId}
-                  style={idx.EmployeeId <= count ? {} : { display: "none" }}
-                >
-                  {idx.FirstName}
-                </li>
-              </>
-            );
-          })}
+      <div className="flashcard" style={flashcardStyle}>
+        <span className="furigana" style={furiganaStyle}>
+          わ た し
+        </span>
+        <p className="kanji" style={kanjiStyle}>
+          私
+        </p>
       </div>
     </>
   );
-}
+};
+
+const FlashCardRotating = () => {
+  const [isHover, setIsHover] = useState(false);
+  const [isRotated, setIsRotated] = useState(false);
+
+  const CardStyle = {
+    perspective: "150rem",
+    position: "relative",
+    height: "40rem",
+    maxWidth: "400px",
+    margin: "2rem",
+    boxShadow: "none",
+    background: "none",
+  };
+
+  const cardSide = {
+    // height: "35rem",
+    borderRadius: "15px",
+    transition: "all 0.8s ease",
+    backfaceVisibility: "hidden",
+    // position: "absolute",
+    // top: "0",
+    // left: "0",
+    width: "80%,",
+    padding: "2rem,",
+    // color: "white",
+  };
+
+  const handleMouseEnter = () => {
+    console.log("mouse entered");
+    setIsHover(true);
+  };
+  const handleMouseLeave = () => {
+    console.log("mouse leaving");
+    setIsHover(false);
+  };
+
+  // [:: FRONT ::]
+  const frontHover = {
+    transform: "rotateY(0.0deg)",
+  };
+
+  const rotationHover = {
+    transform: "rotateY(-89.9deg)",
+  };
+
+  const front = {
+    backgroundColor: "#0093E9",
+    backgroundImage: "linear-gradient(160deg, #0093E9 0%, #80D0C7 100%)",
+  };
+
+  const FrontSide = () => {
+    const _static = { ...cardSide, ...front };
+    const animated = { ...cardSide, ...front, ...frontHover };
+
+    const furiganaStyle = {
+      position: "relative",
+      top: "-10",
+      left: "90px",
+      color: "black",
+    };
+
+    return (
+      <div className="card-side back" style={isHover ? _static : animated}>
+        <span className="furigana" style={{ display: "none" }}>
+          わ た し
+        </span>
+        <div style={{ fontSize: "120px" }}>私</div>
+        <p
+          style={{
+            display: "inline-block",
+            marginLeft: "5px",
+            // borderTop: "solid 1px black",
+            // borderBottom: "double 1px black",
+            // borderLeft: "soldi 1px black",
+            borderBottomLeftRadius: "18px 8px",
+            // borderTopLeftRadius: "5px",
+            // borderRight: "solid 1px black",
+            border: "double 5px black",
+            paddingRight: "2px",
+            paddingLeft: "5px",
+            paddingTop: "2px",
+            // backgroundColor: "#0093E9",
+            // backgroundImage:
+            //   "linear-gradient(160deg, #0093E9 0%, #80D0C7 100%)",
+            // borderInlineEnd: "solid; writing-mode: horizontal-tb",
+          }}
+        >
+          FRONT
+        </p>
+      </div>
+    );
+  };
+
+  const rotationback = {
+    backgroundColor: "#0093E9",
+    backgroundImage: "linear-gradient(160deg, #0093E9 0%, #80D0C7 100%)",
+  };
+
+  const FrontSideRotation = () => {
+    const furiganaStyle = {
+      position: "relative",
+      top: "-10",
+      left: "90px",
+      color: "black",
+    };
+    return (
+      <div
+        className="card-side back"
+        style={
+          isHover
+            ? { ...cardSide, ...rotationHover, ...rotationback }
+            : { ...cardSide, ...rotationback }
+        }
+      >
+        <span className="furigana" style={{ display: "none" }}>
+          わ た し
+        </span>
+        <div style={{ fontSize: "120px" }}>私</div>
+        <p
+          style={{
+            display: "inline-block",
+            marginLeft: "5px",
+            // borderTop: "solid 1px black",
+            // borderBottom: "double 1px black",
+            // borderLeft: "soldi 1px black",
+            borderBottomLeftRadius: "18px 8px",
+            // borderTopLeftRadius: "5px",
+            // borderRight: "solid 1px black",
+            border: "double 5px black",
+            paddingRight: "2px",
+            paddingLeft: "5px",
+            paddingTop: "2px",
+            // backgroundColor: "#0093E9",
+            // backgroundImage:
+            //   "linear-gradient(160deg, #0093E9 0%, #80D0C7 100%)",
+            // borderInlineEnd: "solid; writing-mode: horizontal-tb",
+          }}
+        >
+          FRONT
+        </p>
+      </div>
+    );
+  };
+
+  // _____________
+  // |    BACK    |
+  // -------------
+
+  const backRotationHover = {
+    transform: "rotateY(-360deg)",
+  };
+
+  const BackSideRotation = () => {
+    const furiganaStyle = {
+      position: "relative",
+      top: "-10",
+      left: "90px",
+      color: "black",
+    };
+    return (
+      <div
+        className="card-side back"
+        style={
+          isHover
+            ? { ...cardSide, ...backRotationHover, ...rotationback }
+            : { ...cardSide, ...rotationback }
+        }
+      >
+        <span className="furigana" style={furiganaStyle}>
+          わ た し
+        </span>
+        <div style={{ fontSize: "120px" }}>私</div>
+        <p
+          style={{
+            display: "inline-block",
+            marginLeft: "5px",
+            // borderTop: "solid 1px black",
+            // borderBottom: "double 1px black",
+            // borderLeft: "soldi 1px black",
+            borderBottomLeftRadius: "18px 8px",
+            // borderTopLeftRadius: "5px",
+            // borderRight: "solid 1px black",
+            border: "double 5px black",
+            paddingRight: "2px",
+            paddingLeft: "5px",
+            paddingTop: "2px",
+            // backgroundColor: "#0093E9",
+            // backgroundImage:
+            //   "linear-gradient(160deg, #0093E9 0%, #80D0C7 100%)",
+            // borderInlineEnd: "solid; writing-mode: horizontal-tb",
+          }}
+        >
+          BACK
+        </p>
+      </div>
+    );
+  };
+
+  const backHover = {
+    transform: "rotateY(0deg)",
+  };
+
+  const back = {
+    backgroundColor: "#0093E9",
+    backgroundImage: "linear-gradient(160deg, #0093E9 0%, #80D0C7 100%)",
+  };
+
+  const BackSide = () => {
+    const furiganaStyle = {
+      position: "relative",
+      top: "-10",
+      left: "90px",
+      color: "black",
+    };
+    return (
+      <div
+        className="card-side back"
+        style={
+          isHover
+            ? { ...cardSide, ...backHover, ...back }
+            : { ...cardSide, ...back }
+        }
+      >
+        <span className="furigana" style={furiganaStyle}>
+          わ た し
+        </span>
+        <div style={{ fontSize: "120px" }}>私</div>
+        <p
+          style={{
+            display: "inline-block",
+            marginLeft: "5px",
+            // borderTop: "solid 1px black",
+            // borderBottom: "double 1px black",
+            // borderLeft: "soldi 1px black",
+            borderBottomLeftRadius: "18px 8px",
+            // borderTopLeftRadius: "5px",
+            // borderRight: "solid 1px black",
+            border: "double 5px black",
+            paddingRight: "2px",
+            paddingLeft: "5px",
+            paddingTop: "2px",
+            // backgroundColor: "#0093E9",
+            // backgroundImage:
+            //   "linear-gradient(160deg, #0093E9 0%, #80D0C7 100%)",
+            // borderInlineEnd: "solid; writing-mode: horizontal-tb",
+          }}
+        >
+          BACK
+        </p>
+      </div>
+    );
+  };
+
+  if (isHover === false && isRotated === false) {
+    return (
+      <>
+        <div
+          className="card"
+          style={{ ...CardStyle }}
+          onMouseEnter={() => {
+            handleMouseEnter();
+            setTimeout(() => {
+              setIsRotated(true);
+            }, 700);
+          }}
+          onMouseLeave={() => {
+            handleMouseLeave();
+            // setTimeout(() => {
+            //   setIsRotated(false);
+            // }, 700);
+          }}
+        >
+          <h2 style={{ marginBottom: "40px" }}>{`isHover: ${isHover
+            .toString()
+            .toUpperCase()}`}</h2>
+          <h2 style={{ marginBottom: "40px" }}>{`isRotated: ${isRotated
+            .toString()
+            .toUpperCase()}`}</h2>
+          {isHover ? FrontSideRotation() : FrontSide()}
+        </div>
+      </>
+    );
+  } else if (isHover === true && isRotated === false) {
+    return (
+      <>
+        <div
+          className="card"
+          style={{ ...CardStyle }}
+          onMouseEnter={() => {
+            handleMouseEnter();
+            setTimeout(() => {
+              setIsRotated(true);
+            }, 700);
+          }}
+          onMouseLeave={() => {
+            handleMouseLeave();
+            setTimeout(() => {
+              setIsRotated(false);
+            }, 700);
+          }}
+        >
+          <h2 style={{ marginBottom: "40px" }}>{`isHover: ${isHover
+            .toString()
+            .toUpperCase()}`}</h2>
+          <h2 style={{ marginBottom: "40px" }}>{`isRotated: ${isRotated
+            .toString()
+            .toUpperCase()}`}</h2>
+          {isHover ? FrontSideRotation() : FrontSide()}
+        </div>
+      </>
+    );
+  } else if (isHover === true && isRotated === true) {
+    return (
+      <>
+        <div
+          className="card"
+          style={{ ...CardStyle }}
+          onMouseEnter={() => {
+            handleMouseEnter();
+            setTimeout(() => {
+              setIsRotated(true);
+            }, 700);
+          }}
+          onMouseLeave={() => {
+            handleMouseLeave();
+            setTimeout(() => {
+              setIsRotated(false);
+            }, 700);
+          }}
+        >
+          <h2 style={{ marginBottom: "40px" }}>{`isHover: ${isHover
+            .toString()
+            .toUpperCase()}`}</h2>
+          <h2 style={{ marginBottom: "40px" }}>{`isRotated: ${isRotated
+            .toString()
+            .toUpperCase()}`}</h2>
+          {isHover ? BackSideRotation() : BackSide()}
+        </div>
+      </>
+    );
+  } else {
+    return (
+      <>
+        <div
+          className="card"
+          style={{ ...CardStyle }}
+          onMouseEnter={() => {
+            handleMouseEnter();
+            setTimeout(() => {
+              setIsRotated(true);
+            }, 700);
+          }}
+          onMouseLeave={() => {
+            handleMouseLeave();
+            setTimeout(() => {
+              setIsRotated(false);
+            }, 700);
+          }}
+        >
+          <h2 style={{ marginBottom: "40px" }}>{`isHover: ${isHover
+            .toString()
+            .toUpperCase()}`}</h2>
+          <h2 style={{ marginBottom: "40px" }}>{`isRotated: ${isRotated
+            .toString()
+            .toUpperCase()}`}</h2>
+          {isHover ? BackSideRotation() : BackSide()}
+        </div>
+      </>
+    );
+  }
+};
 
 const App = () => {
-  return <Counter />;
+  return (
+    <>
+      <FlashCardRotating />
+    </>
+  );
 };
 
 export default App;
