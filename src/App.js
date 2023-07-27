@@ -1,58 +1,8 @@
-// [:: LIBRARIES ::]
-import { useState } from "react";
-
-// [:: STYLES ::]
 import "./styles/App.css";
 import "./styles/FormStyle.css";
-
+import { useState } from "react";
 import "./styles/Employees.css";
-
-// [:: COMPONENTS ::]
-// import TabContainer from "./components/TabContainer.component";
-
-// [:: UTILS ::]
-// import { Post } from "../src/lib/Post";
-
-// [:: HOOKS ::]
-// import employees from "./data/employees";
-
-const flashcardStyle = {
-  border: "solid 1px black",
-  padding: "20px",
-  width: "auto",
-  // margin: "10px 10px 10px 10px",
-  borderRadius: "8px",
-  WebkitBoxShadow: "10px 14px 6px 1px rgba(0,0,0,0.47)",
-  MozBoxShadow: "10px 14px 6px 1px rgba(0,0,0,0.47)",
-  boxShadow: "10px 14px 6px 1px rgba(0,0,0,0.47)",
-};
-
-const FlashCard = () => {
-  const kanjiStyle = {
-    fontSize: "120px",
-    position: "relative",
-    left: "60px",
-  };
-
-  const furiganaStyle = {
-    position: "relative",
-    top: "-10",
-    left: "90px",
-  };
-
-  return (
-    <>
-      <div className="flashcard" style={flashcardStyle}>
-        <span className="furigana" style={furiganaStyle}>
-          わ た し
-        </span>
-        <p className="kanji" style={kanjiStyle}>
-          私
-        </p>
-      </div>
-    </>
-  );
-};
+import RotatingFlashCard from "./components/flashcards/RotatingFlashCard/RotatingFlashCard.component";
 
 const FlashCardRotating = () => {
   const [isHover, setIsHover] = useState(false);
@@ -108,12 +58,12 @@ const FlashCardRotating = () => {
     const _static = { ...cardSide, ...front };
     const animated = { ...cardSide, ...front, ...frontHover };
 
-    const furiganaStyle = {
-      position: "relative",
-      top: "-10",
-      left: "90px",
-      color: "black",
-    };
+    // const furiganaStyle = {
+    //   position: "relative",
+    //   top: "-10",
+    //   left: "90px",
+    //   color: "black",
+    // };
 
     return (
       <div className="card-side back" style={isHover ? _static : animated}>
@@ -153,12 +103,12 @@ const FlashCardRotating = () => {
   };
 
   const FrontSideRotation = () => {
-    const furiganaStyle = {
-      position: "relative",
-      top: "-10",
-      left: "90px",
-      color: "black",
-    };
+    // const furiganaStyle = {
+    //   position: "relative",
+    //   top: "-10",
+    //   left: "90px",
+    //   color: "black",
+    // };
     return (
       <div
         className="card-side back"
@@ -429,7 +379,10 @@ const FlashCardRotating = () => {
 const App = () => {
   return (
     <>
+      <h2>Monolithic</h2>
       <FlashCardRotating />
+      <h2>Flash Card</h2>
+      <RotatingFlashCard />
     </>
   );
 };
