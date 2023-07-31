@@ -13,7 +13,7 @@ const FrontSideRotation = () => {
       className="card-side back"
       style={{ ...cardSide, ...ROTATION_HOVER, ...FRONT_ROTATION_BACK }}
     >
-      <div style={{ fontSize: "120px" }}>私</div>
+      <div style={{ fontSize: "120px" }}>FRONTSIDE: ROTATION</div>
     </div>
   );
 };

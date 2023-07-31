@@ -1,0 +1,24 @@
+/* src/index.css */
+@import "prismjs/themes/prism-okaidia.css";
+
+pre {
+  background-color: #f4f4f4;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+code {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 140px;
+  line-height: 1.4;
+}
+
+.codeContainer {
+  width: 500px;
+  margin: 0 auto;
+  border: dashed 1px black;
+  padding: 10px;
+  position: absolute;
+  top: 200px;
+  left: 500px;
+}

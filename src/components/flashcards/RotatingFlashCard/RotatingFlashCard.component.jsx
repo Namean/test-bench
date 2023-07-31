@@ -9,6 +9,17 @@ import BackSideRotation from "./BackSideRotaion";
 const RotatingFlashCard = () => {
   const [isHover, setIsHover] = useState(false);
   const [isRotated, setIsRotated] = useState(false);
+  const [isAnimationComplete, setIsAnimationComplete] = useState(false);
+
+  const StateInfo = () => {
+    return (
+      <>
+        <h2>{`isHover:             ${isHover}`}</h2>
+        <h2>{`isRotated:           ${isRotated}`}</h2>
+        <h2>{`isAnimationComplete: ${isAnimationComplete}`}</h2>
+      </>
+    );
+  };
 
   // prettier-ignore
   const handleMouseEnter = () => { setIsHover(true); };
@@ -34,6 +45,7 @@ const RotatingFlashCard = () => {
             // }, 700);
           }}
         >
+          <StateInfo />
           {isHover ? FrontSideRotation() : FrontSide()}
         </div>
       </>
@@ -57,6 +69,7 @@ const RotatingFlashCard = () => {
             }, 700);
           }}
         >
+          <StateInfo />
           {isHover ? FrontSideRotation() : FrontSide()}
         </div>
       </>
@@ -69,22 +82,21 @@ const RotatingFlashCard = () => {
           style={{ ...CardStyle, marginBottom: "40px" }}
           onMouseEnter={() => {
             handleMouseEnter();
-            setTimeout(() => {
-              setIsRotated(true);
-            }, 700);
+            setIsRotated(true);
           }}
           onMouseLeave={() => {
             handleMouseLeave();
-            setTimeout(() => {
-              setIsRotated(false);
-            }, 700);
+            setIsRotated(false);
           }}
         >
-          {isHover ? BackSideRotation(isHover) : BackSide(isHover)}
+          <StateInfo />
+          {isHover === true && isRotated === true
+            ? BackSideRotation(isHover)
+            : BackSide(isHover)}
         </div>
       </>
     );
-  } else {
+  } else if (isHover === false && isRotated === false) {
     return (
       <>
         <div
@@ -103,7 +115,11 @@ const RotatingFlashCard = () => {
             }, 700);
           }}
         >
-          {isHover ? BackSideRotation(isHover) : BackSide(isHover)}
+          {<h2>FALSE | FALSE</h2>}
+          <StateInfo />
+          {isHover === false && isRotated === false
+            ? BackSideRotation(isHover)
+            : FrontSideRotation(isHover)}
         </div>
       </>
     );

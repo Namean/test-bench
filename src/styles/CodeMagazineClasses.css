@@ -1,0 +1,55 @@
+/* MAIN-NAV */
+
+.main-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.main-nav a {
+  text-transform: uppercase;
+  margin-right: 20px;
+  text-decoration: none;
+  border: solid 1px black;
+}
+
+.main-nav a::after {
+  margin-left: 10px;
+  content: "\203A";
+  color: red;
+  font-size: 120%;
+  display: inline-block;
+  transform: rotate(90deg);
+}
+
+.flex-child {
+  display: flex;
+  align-items: stretch;
+  display: inline-block;
+}
+
+.flex-child:first-child {
+  margin-right: 20px;
+}
+
+.title {
+  color: blue;
+  display: inline-block;
+  outline: solid 1px black;
+  flex-shrink: 1;
+  /* width: 500px; */
+}
+
+.article-title {
+  font-size: 250%;
+}
+
+.author-img {
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+}
+
+.article-header {
+  /* border: dashed 12px red; */
+}

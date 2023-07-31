@@ -28,7 +28,7 @@ const BackSide = ({ isHover }) => {
       <span className="furigana" style={{ ...furiganaStyle, display: "none" }}>
         わ た し
       </span>
-      <div style={{ fontSize: "120px" }}>私</div>
+      <div style={{ fontSize: "120px" }}>BACKSIDE</div>
     </div>
   );
 };

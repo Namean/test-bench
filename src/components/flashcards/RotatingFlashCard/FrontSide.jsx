@@ -8,7 +8,7 @@ const FrontSide = () => {
 
   return (
     <div className="card-side back" style={{ ...cardSide, ...front }}>
-      <div style={{ fontSize: "120px" }}>私</div>
+      <div style={{ fontSize: "120px" }}>FRONTSIDE</div>
     </div>
   );
 };

@@ -1,12 +1,12 @@
 import { cardSide } from "./RotatingFlashCard.style";
 
-const BackSideRotation = (isHover) => {
+const ReverseBackSideRotation = (isHover) => {
   const BACK_ROTATION_BACK = {
     backgroundColor: "#0093E9",
     backgroundImage: "linear-gradient(160deg, #0093E9 0%, #80D0C7 100%)",
   };
   const backRotationHover = {
-    transform: "rotateY(-360deg)",
+    transform: "rotateY(-89.9deg)",
   };
 
   const furiganaStyle = {
@@ -32,4 +32,4 @@ const BackSideRotation = (isHover) => {
   );
 };
 
-export default BackSideRotation;
+export default ReverseBackSideRotation;
