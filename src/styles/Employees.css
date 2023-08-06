@@ -1,0 +1,74 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  /* background-color: #2196f3; */
+  margin: 0 auto;
+}
+
+.grid-item {
+  /* background-color: yellow; */
+  /* border: 1px solid rgba(0, 0, 0, 0.8); */
+  /* padding: 20px; */
+  font-size: 30px;
+  text-align: center;
+  width: 100%;
+  /* margin-right: 40px; */
+  margin: 0 auto;
+}
+
+.employee-name p {
+  font-size: 120%;
+}
+
+.employee-card {
+  border: solid 1px black;
+  width: 300px;
+  padding: 40px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+}
+
+.main-nav {
+}
+
+.main-nav li {
+}
+
+.main-nav-flex-item {
+  list-style: none;
+  text-transform: capitalize;
+  font-size: 120%;
+  margin-left: 10px;
+}
+
+.scrollmenu {
+  /* background-color: #333; */
+  overflow: auto;
+  white-space: nowrap;
+  height: 600px;
+  border: solid 2px #ff007f;
+  border-radius: 8px;
+}
+/* .scrollmenu a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px;
+  text-decoration: none;
+} */
+.scrollmenu a:hover {
+  background-color: #777;
+}
+
+.employee-details-container {
+}
+
+label {
+  display: block;
+  font: 1rem "Fira Sans", sans-serif;
+}
+
+input,
+label {
+  margin: 0.4rem 0;
+}
