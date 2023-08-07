@@ -1,3 +1,8 @@
+body {
+  color: #444;
+  font-family: sans-serif;
+}
+
 h1,
 h2,
 h3,
@@ -5,7 +10,6 @@ h4,
 p,
 li {
   font-family: sans-serif;
-  color: #444;
 }
 
 h1,
@@ -78,6 +82,66 @@ aside {
   border-bottom: solid 2px #1098ad;
 }
 
-li:nth-child(1) {
+li:first-child {
   font-weight: bold;
+}
+
+li:last-child {
+  font-style: italic;
+}
+
+li:nth-child(even) {
+  /* color: red; */
+}
+
+/* if, the attributes apply to the element selected
+in this case the first child of the article is a header element
+that doens't turn red */
+article p:first-child {
+  color: red;
+}
+
+/* Styling links */
+/* We shouldn't select the anchor tag directly
+but should select a pseudo class of the anchor that'll allow
+us to target different states */
+a:link {
+  color: #1098ad;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #1098ad;
+}
+
+a:hover {
+  color: orangered;
+  font-weight: bold;
+  text-decoration: wavy;
+  transition: all 0.8s;
+}
+
+a:active {
+  background-color: black;
+  font-style: italic;
+}
+
+/* LVHA */
+
+/* Resolving Conflicts */
+
+/* #copyright {
+  color: red;
+} */
+
+.copyright {
+  color: blue;
+}
+
+.text {
+  color: yellow;
+}
+
+footer p {
+  color: green;
 }
