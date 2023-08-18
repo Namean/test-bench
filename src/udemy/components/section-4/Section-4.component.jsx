@@ -24,9 +24,10 @@ const SectionFour = ({ state }) => {
               alt="Headshot of Laura Jones"
               height="50"
               width="50"
+              className="author-img"
             />
 
-            <p id="author">
+            <p id="author" className="author">
               Posted by <strong>Laura Jones</strong> on Monday, June 21st 2027
             </p>
 

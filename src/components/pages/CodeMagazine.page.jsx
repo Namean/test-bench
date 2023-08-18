@@ -42,7 +42,7 @@ const Article = () => {
         <p>Published on Monday, June 21st 2027</p>
         <img
           className="author-img"
-          src={`${imageHostName}/laura-jones.jpg`}
+          src={`http://${state.ADDR}:${state.PORT}/laura-jones.jpg`}
           alt="author"
         />
         <p className="post-info">
@@ -190,7 +190,7 @@ const Footer = () => {
   return <footer>Copyright &copy; 2027 by The Code Magazine</footer>;
 };
 
-const CodeMagazine = () => {
+const CodeMagazinePage = () => {
   return (
     <div className="container">
       <MainHeader child={MainNav()} />
@@ -203,4 +203,4 @@ const CodeMagazine = () => {
   );
 };
 
-export default CodeMagazine;
+export default CodeMagazinePage;

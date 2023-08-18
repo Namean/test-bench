@@ -1,0 +1,162 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: #444;
+  margin: 0 auto;
+  background-color: #e5e5e5;
+}
+
+.container {
+  margin: 0 auto;
+  border: solid 16px black;
+  margin: 20px;
+}
+
+.job-nav {
+  background-color: dodgerblue;
+  color: #fff;
+}
+
+.job-nav li {
+  display: inline-block;
+  margin-right: 5px;
+  font-size: 140%;
+  text-transform: capitalize;
+  text-decoration: none;
+  list-style-type: none;
+  color: #fff;
+}
+
+.card-container {
+  /* border: solid 1px black; */
+  /* border-radius: 5px; */
+  display: inline-block;
+  padding: 20px;
+  margin: 20px 20px;
+
+  width: 33%;
+  background-color: #fff;
+}
+
+.job-title {
+  text-align: center;
+  font-size: 120%;
+  margin-bottom: 10px;
+}
+
+.job-pay {
+  margin-bottom: 10px;
+}
+
+.job-pay::before {
+  content: "$";
+}
+
+.job-description {
+  font-size: 100%;
+}
+
+.btn-container {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.job-apply-btn {
+  /* position: absolute; */
+
+  padding: 15px;
+  border: none;
+  background-color: dodgerblue;
+  color: #fff;
+  cursor: pointer;
+}
+
+.job-apply-btn:hover {
+  /* border: solid 1px #000; */
+}
+
+.job-checkbox-container {
+  display: flex;
+  flex-direction: row;
+  /* border: solid 1px black; */
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.job-checkbox-container label {
+  /* margin-right: 15px; */
+}
+
+.job-checkbox {
+}
+
+.checkbox-container {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.checkbox-container label {
+  margin-right: 5px;
+}
+
+/* SKETCH CODE */
+
+.sketch-container {
+  background-color: rgba(218, 110, 98, 0.61);
+  width: 1200px;
+  height: 800px;
+  margin-left: 40px;
+  margin-bottom: 100px;
+  /* margin: 0 auto; */
+  margin-top: 120px;
+}
+
+.sketch-card {
+  background-color: #fff;
+  height: 80%;
+  width: 80%;
+  display: inline-block;
+  /* padding: 40px; */
+  margin-left: 120px;
+  margin-top: 80px;
+
+  /* border: solid 5px black; */
+}
+
+.sketch-inner-container {
+  border: solid 3px black;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  margin-left: 140px;
+}
+
+.logo {
+}
+.logo-text {
+  font-size: 150%;
+  font-weight: 700;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.sketch-nav {
+  margin-bottom: 40px;
+}
+
+.product-description {
+  font-size: 300%;
+  width: 500px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 90px;
+}
+
+.product-price {
+  font-size: 300%;
+  font-weight: bold;
+  color: #a3a3a3;
+}

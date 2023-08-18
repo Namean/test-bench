@@ -1,6 +1,22 @@
 import "./Section3Challenge1Style.css";
 
-const Section3Challenge1 = () => {
+const Section3Challenge1 = ({ state }) => {
+  const localhost = `http://localhost:${state.PORT}`;
+
+  const ColorSquare = ({ style }) => {
+    return (
+      <div
+        style={{ backgroundColor: "dodgerblue" }}
+        className="product-color"
+      ></div>
+    );
+  };
+
+  let colors = ["black", "blue", "red", "gold", "green", "brown"];
+  const ColorSquareList = ({ colors }) => {
+    const list = colors.map((idx, index) => <ColorSquare style={idx} />);
+  };
+
   return (
     <>
       <div className="container">
@@ -10,9 +26,10 @@ const Section3Challenge1 = () => {
               Converse Chuck Taylor All Star Low Top
             </h2>
           </header>
+          <p className="sale">sale</p>
           <div className="product-container">
             <img
-              src="http://localhost:3000/challenges.jpg"
+              src={`${state.URL}/img/challenges.jpg`}
               alt="converse Chuck Taylor shoes"
               style={{
                 width: "250px",
@@ -27,12 +44,33 @@ const Section3Challenge1 = () => {
               Ready to dress up or down these class canvas every day Chucks are
               an everyday wardrobe staple.
             </p>
-            <a
-              className="more-info"
-              href="http://localhost:3000/more-information"
-            >
+            <a className="more-info" href={`${localhost}/more-information`}>
               More information &rarr;
             </a>
+
+            <div className="product-colors-container">
+              <div className="product-color"></div>
+              <div
+                style={{ backgroundColor: "dodgerblue" }}
+                className="product-color"
+              ></div>
+              <div
+                style={{ backgroundColor: "red" }}
+                className="product-color"
+              ></div>
+              <div
+                style={{ backgroundColor: "gold" }}
+                className="product-color"
+              ></div>
+              <div
+                style={{ backgroundColor: "lime" }}
+                className="product-color"
+              ></div>
+              <div
+                style={{ backgroundColor: "brown" }}
+                className="product-color"
+              ></div>
+            </div>
 
             <div className="product-details">
               <aside>
