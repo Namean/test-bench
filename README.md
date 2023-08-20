@@ -76,6 +76,8 @@ had to install body-parser
 
 [MDN Using the Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
 
+[How To Add Login Authentication to React Applications](https://www.digitalocean.com/community/tutorials/how-to-add-login-authentication-to-react-applications)
+
 ```js
 async function postData(url = "", data = {}) {
   // Default options are marked with *
