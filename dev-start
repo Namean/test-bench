@@ -1,0 +1,8 @@
+pm2 start /Users/allspark/Documents/src/auth-api/server.js --name auth
+pm2 start /Users/allspark/Documents/src/data-api/server.js --name data
+
+cd /Users/allspark/Documents/src/test-bench
+
+# example: pm2 start --name dashboard npm -- start
+
+pm2 start --name client npm -- start

@@ -8,8 +8,45 @@ body {
   color: #444;
   margin: 0 auto;
   /* background-color: #e5e5e5; */
+  font-size: 120%;
 }
 
 .wrapper {
   padding: 20px;
+}
+
+nav {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.nav-link {
+  margin-right: 5px;
+  text-decoration: none;
+  font-size: 120%;
+  text-transform: capitalize;
+  border: solid 1px black;
+  padding: 5px;
+  background-color: cornflowerblue;
+  color: #fff;
+}
+
+.resourceListCotainer {
+  margin-top: 30px;
+}
+
+.resource {
+  border: solid 1px black;
+  padding: 10px;
+  margin-bottom: 40px;
+  height: 250px;
+}
+
+.resource-title {
+  color: red;
+  margin-bottom: 10px;
+}
+
+.description {
+  margin-bottom: 20px;
 }

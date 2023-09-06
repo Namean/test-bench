@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.resourcelistcomponent-container {
+  width: 80%;
+  margin: 0 auto;
+}
+.resource-list-item-container {
+  border: solid 1px black;
+  padding: 20px;
+  display: flex;
+  list-style-type: none;
+}
+.resource-list-item {
+  margin: 10px;
+}
+
+.resource-list-item a {
+  color: #296eaa;
+}
+
+.resource-list-item a:link,
+.resource-list-item a:visited,
+.resource-list-item a:hover,
+.resource-list-item a:active {
+  text-decoration: none;
+}

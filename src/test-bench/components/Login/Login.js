@@ -25,12 +25,15 @@ export default function Login({ setToken }) {
     });
     // handle incorrect password here!
     let _username = "desmond";
-    let _password = 1234;
-    if (username !== _username) {
+    let _password = "1234";
+    if (username === _username && password === _password) {
+      setToken(token);
+      window.location.href = "http://localhost:3000/dashboard";
+    } else {
       alert("AUTH FAILED!");
       return;
     }
-    setToken(token);
+    // setToken(token);
   };
 
   return (
