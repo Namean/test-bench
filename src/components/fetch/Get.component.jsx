@@ -2,7 +2,6 @@ import useFetch from "../../lib/hooks/useFetch";
 
 const Get = () => {
   const [data] = useFetch("https://jsonplaceholder.typicode.com/todos");
-
   return (
     <>
       {data &&

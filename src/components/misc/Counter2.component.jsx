@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-
+import useFetch from "../../lib/hooks/useFetch";
 function Counter() {
   const [count, setCount] = useState(1);
   const [calculation, setCalculation] = useState(0);
   const url2 = "http://172.16.150.190:3001/employees";
-  // const [data] = useFetch(url2);
-  const data = employees;
+  const [data] = useFetch(url2);
+  const employees = data;
   useEffect(() => {
     setCalculation(() => count * 2);
   }, [count]); // <- add the count variable here

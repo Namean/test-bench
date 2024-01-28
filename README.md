@@ -106,10 +106,13 @@ postData("https://example.com/answer", { answer: 42 }).then((data) => {
 [How do I POST a x-www-form-urlencoded request using Fetch?](https://stackoverflow.com/questions/35325370/how-do-i-post-a-x-www-form-urlencoded-request-using-fetch)
 
 ```js
+const GRANT_TYPE_PASSWORD = "password";
+
 var details = {
   userName: "test@gmail.com",
   password: "Password!",
-  grant_type: "password",
+  grant_type: GRANT_TYPE_PASSWORD,
+  // grant_type: "password",
 };
 
 var formBody = [];
@@ -133,17 +136,29 @@ So now I need to put this into a React hook.
 
 ```js
 // http://172.16.150.190:3001/user
-const usePost = (url, details) => {
+
+const use__X_FORM_URL_ENCODED = (url, details) => {
   const [data, setData] = useState(null);
 
   var formBody = [];
   for (var property in details) {
+    // breakup into separate function
+    // encodeKey
     var encodedKey = encodeURIComponent(property);
+
+    // breakup into separate function
+    // encodeValue
     var encodedValue = encodeURIComponent(details[property]);
+
     formBody.push(encodedKey + "=" + encodedValue);
   }
   formBody = formBody.join("&");
   setData(formBody);
+
+  let http_methods = {
+    GET: "GET",
+    POST: "POST",
+  };
 
   fetch(url, {
     method: "POST",

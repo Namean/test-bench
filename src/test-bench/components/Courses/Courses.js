@@ -7,10 +7,13 @@ import {
   useRouteMatch,
 } from "react-router-dom";
 
+import { courseData } from "./course-data";
+
 import { useState, useEffect } from "react";
 import "./Courses.css";
 import Get from "../../../components/fetch/Get.component";
 import MyGet from "../../../components/fetch/MyGet.component";
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 const MicroMarkComponent = ({ output }) => {
   return (
     <div>
@@ -22,48 +25,42 @@ const MicroMarkComponent = ({ output }) => {
   );
 };
 
+const CoursePage = () => {};
+
 const Course = ({ state, localState, idx }) => {
-  return (
-    <div className="course">
-      <p>{idx.title}</p>
-      <p>{idx.provider}</p>
-    </div>
-  );
+  return <p className="course-title">{idx.title}</p>;
 };
 
-const Course1 = () => {
-  return (
-    <div>
-      <h1>Course 1</h1>
-      <p>Here is some more content!</p>
-    </div>
-  );
+const CourseList = ({ state }) => {
+  const [count, setCount] = useState(0);
+
+  const localState = {
+    count: count,
+    setCount: setCount,
+  };
+
+  let courseList = courseData.map((idx, index) => (
+    <Course localState={localState} idx={idx} />
+  ));
+  return <div className="course-container">{courseList}</div>;
 };
 
-let courseData = [
-  {
-    title: "Foundations of Digital Marketing and E-commerce",
-    provider: "coursera",
-    courses_list_page: "https://www.coursera.org/?skipBrowseRedirect=true",
-    direct_link:
-      "https://www.coursera.org/learn/foundations-of-digital-marketing-and-e-commerce/home/welcome",
-  },
-];
+// function addCourse() {
+//   if (youtubeCourse) addYouTubeCourse();
+// }
 
 function NestingExample() {
   return (
     <Router>
       <div>
-        <ul>
-          <li>
+        <nav className="subnav">
+          <li className="subnav-list-item">
             <Link to="/">Home</Link>
           </li>
-          <li>
+          <li className="subnav-list-item">
             <Link to="/topics">Topics</Link>
           </li>
-        </ul>
-
-        <hr />
+        </nav>
 
         <Switch>
           <Route exact path="/">
@@ -92,19 +89,48 @@ function Topics() {
   // us build relative links.
   let { path, url } = useRouteMatch();
 
+  const LinkStyle = {
+    textDecoration: "none",
+    color: "red",
+    listStyleType: "none",
+    border: "solid 1px black",
+  };
+
+  const arr = [1, 2, 3, 4];
+  let data_list = arr.map((idx, index) => (
+    <li>
+      <Link style={LinkStyle} to={`${url}/section-${idx}`}>
+        Section {idx}
+      </Link>
+    </li>
+  ));
+
   return (
     <div>
-      <h2>Topics</h2>
-      <ul className="topics-list">
+      {/* <ul className="topics-list">
         <li>
-          <Link to={`${url}/rendering`}>Rendering with React</Link>
+          <Link to={`${url}/section-1`}>Section 1</Link>
         </li>
         <li>
-          <Link to={`${url}/components`}>Components</Link>
+          <Link to={`${url}/section-2`}>Section 2</Link>
         </li>
         <li>
-          <Link to={`${url}/props-v-state`}>Props v. State</Link>
+          <Link to={`${url}/section-3`}>Section 3</Link>
         </li>
+        <li>
+          <Link to={`${url}/section-4`}>Section 4</Link>
+        </li>
+      </ul> */}
+
+      <ul
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          listStyleType: "none",
+        }}
+        className="topics-list"
+      >
+        {data_list}
       </ul>
 
       <Switch>
@@ -119,6 +145,180 @@ function Topics() {
   );
 }
 
+const Section = ({ id }) => {
+  return (
+    <div>
+      <h1>Section {id}</h1>
+      <SectionContent id={id} />
+    </div>
+  );
+};
+
+const paragraph_style = {
+  margin: "20px",
+};
+const paragraph_style_big = {
+  fontSize: "150%",
+  color: "red",
+  marginBottom: "20px",
+};
+
+const imageStyle = {
+  red_border_square: {
+    border: "solid 2px red",
+  },
+  blue_border_round: {
+    border: "solid 2px blue",
+    borderRadius: "50%",
+  },
+};
+
+let contentData = [
+  {
+    section: 1,
+    content_list: [
+      {
+        element: "paragraph",
+        text: "This is a generated paragraph element for section 1",
+        style: paragraph_style,
+      },
+      {
+        element: "paragraph",
+        text: "This is the second paragraph for section 1",
+        style: paragraph_style,
+      },
+      {
+        element: "image",
+        src: "https://picsum.photos/id/11/150",
+        alt: "random",
+        style: imageStyle.blue_border_round,
+      },
+    ],
+  },
+  {
+    section: 2,
+    content_list: [
+      {
+        element: "paragraph",
+        text: "This is a generated paragraph element for section 2",
+      },
+    ],
+  },
+  {
+    section: 3,
+    content_list: [
+      {
+        element: "paragraph",
+        text: "This is a generated paragraph element for section 3",
+      },
+    ],
+  },
+  {
+    section: 4,
+    content_list: [
+      {
+        element: "paragraph",
+        text: "This is a generated paragraph element for section 4",
+      },
+    ],
+  },
+];
+
+// let SectionData = [
+//   {
+//     section: 1,
+//     content: {
+//       contentData,
+//     },
+//   },
+//   {
+//     section: 2,
+//     content: {
+//       contentData,
+//     },
+//   },
+//   {
+//     section: 3,
+//     content: {
+//       contentData,
+//     },
+//   },
+//   {
+//     section: 4,
+//     content: {
+//       contentData,
+//     },
+//   },
+// ];
+
+const SectionContent = ({ id }) => {
+  const key = id;
+  // let section = SectionData.filter((idx) => idx.section === key)[0];
+  // let content = section.content.contentData[0];
+  let content = contentData.filter((idx) => idx.section === key)[0]
+    .content_list[0];
+
+  // let data = [
+  //   {
+  //     element: "paragraph",
+  //     text: "This is a generated paragraph element for section 1",
+  //     style: paragraph_style,
+  //   },
+  //   {
+  //     element: "paragraph",
+  //     text: "This is the second paragraph for section 1",
+  //     style: big_paragraph_style,
+  //   },
+  //   {
+  //     element: "image",
+  //     src: "https://picsum.photos/id/11/150",
+  //     alt: "random",
+  //     style: imageStyle.blue_border_round,
+  //   },
+  // ];
+
+  const Image = ({ src, alt, style }) => {
+    return <img src={src} alt={alt} style={style} />;
+  };
+
+  const DataList = ({ data, id }) => {
+    let _data = data.filter((idx) => idx.section === id)[0].content_list;
+    console.log(_data);
+    let list = [];
+    for (let i = 0; i < _data.length; i++) {
+      let idx = _data[i];
+
+      if (idx.element === "paragraph")
+        list.push(<Paragraph content={idx.text} style={idx.style} />);
+      if (idx.element === "image")
+        list.push(<Image src={idx.src} alt={idx.alt} style={idx.style} />);
+    }
+    // let buffer = [];
+    // buffer.push(<Paragraph content={"Here is some text buffer arr ref"} />);
+    return <ul>{list}</ul>;
+
+    // return -99;
+  };
+
+  const ContentList = () => {
+    let list = [];
+  };
+
+  return (
+    <div className="section-content">
+      <p>Section-{id} Welcome and First Steps </p>
+      {/* <Paragraph content={"Here is some content"} /> */}
+      {/* <Paragraph content={"More content to be had here"} /> */}
+      {/* <Paragraph content={text} /> */}
+      <DataList data={contentData} id={id} />
+    </div>
+  );
+};
+
+const Paragraph = ({ content, style }) => {
+  return <p style={style}>{content}</p>;
+};
+
 function Topic() {
   // The <Route> that rendered this component has a
   // path of `/topics/:topicId`. The `:topicId` portion
@@ -126,30 +326,11 @@ function Topic() {
   // get from `useParams()`.
   let { topicId } = useParams();
 
-  if (topicId === "rendering") return <MicroMarkComponent />;
+  if (topicId === "section-1") return <Section id={1} />;
+  if (topicId === "section-2") return <Section id={2} />;
+  if (topicId === "section-3") return <Section id={3} />;
+  if (topicId === "section-4") return <Section id={4} />;
+  if (topicId === "courses") return <CourseList />;
 }
 
-const Courses = () => {
-  const [count, setCount] = useState(-99);
-
-  const state = {
-    count: count,
-    setCount: setCount,
-  };
-
-  const CourseList = () => {
-    let courseList = courseData.map((idx, index) => (
-      <Course state={state} idx={idx} />
-    ));
-    return <ul>{courseList}</ul>;
-  };
-
-  // return (
-  //   <div>
-  //     <h1>Courses!</h1>
-  //     <CourseList state={state} />
-  //   </div>
-  // );
-};
-
-export { Courses, Course1, NestingExample };
+export { CourseList, NestingExample };

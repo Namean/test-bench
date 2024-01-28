@@ -23,14 +23,9 @@ const EmployeesContainer = () => {
 
   const enhancedPeople = people.map((idx, index) => (idx.id = index + 1));
 
-  const removePerson = (id) => {
-    console.log(id);
-    console.log(people);
-    let filteredList = people.filter((idx) => !(idx.id === id));
-    console.log(filteredList);
-    setPeople(filteredList);
-  };
+  // CREATE
 
+  // READ
   const peopleList = people.map((idx, index) => {
     return (
       <div id={index + 1} key={index + 1}>
@@ -43,6 +38,18 @@ const EmployeesContainer = () => {
       </div>
     );
   });
+
+  // UPDATE
+
+  // DELETE / DESTROY
+  const removePerson = (id) => {
+    console.log(id);
+    console.log(people);
+    let filteredList = people.filter((idx) => !(idx.id === id));
+    console.log(filteredList);
+    setPeople(filteredList);
+  };
+
   const MainNav = () => {
     return (
       <nav

@@ -8,10 +8,9 @@ import Resources from "./test-bench/components/Resources/Resources";
 import Login from "./test-bench/components/Login/Login";
 import Views from "./test-bench/components/Views/Views";
 import {
-  Courses,
-  Course1,
+  CourseList,
   NestingExample,
-} from "./test-bench/components/Courses/Courses";
+} from "./test-bench/components/Courses/Courses.js";
 import "./test-bench/components/Login/Login.css";
 // import userToken from "/Users/allspark/Documents/src/test-bench/src/test-bench/useToken";
 import { useTokenLocalStorage } from "./test-bench/useToken";
@@ -106,7 +105,7 @@ const TestBench = () => {
             <Views />
           </Route>
           <Route path="/courses">
-            <Courses />
+            <CourseList />
           </Route>
           <Route path="/nesting">
             <NestingExample />

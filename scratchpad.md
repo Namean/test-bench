@@ -4,7 +4,7 @@
 
 I'm getting overwhelmed with tabs, and too many open programs and things,
 
-So I'm getting too far along with out documentting what's even going on...
+So I'm getting too far along with out documenting what's even going on...
 
 So I'd like to write a piece of software to handle that,
 

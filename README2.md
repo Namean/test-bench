@@ -39,29 +39,30 @@ employees = [
 ```js
 const students = [
   {
-    student_id: '001',
-    first_name: 'john',
-    last_name: 'smith' ,
+    student_id: "001",
+    first_name: "john",
+    last_name: "smith",
     age: 18,
-    grade: 'A',
+    grade: "A",
   },
   {
-    student_id: '002',
-    first_name: 'emily',
-    last_name: 'johnson',
+    student_id: "002",
+    first_name: "emily",
+    last_name: "johnson",
     age: 19,
-    grade: 'B',
+    grade: "B",
   },
   {
-    student_id: '003',
-    first_name: 'Michael',
-    last_name: 'Williams',
+    student_id: "003",
+    first_name: "Michael",
+    last_name: "Williams",
     age: 20,
-    grade: 'A',
+    grade: "A",
   },
-]
+];
+```
 
-
+```js
 const courses = [
   {
     course_id: '101',
@@ -79,7 +80,15 @@ const courses = [
     instructor: ,
   },
 ]
+```
 
+instructor_id: identifies instructor
+first_name: first name of instructor
+last_name: family name of instructor
+title: title
+courses_taught: id of courses taught by instructor
+
+```js
 const instructors = [
   {
     instructor_id: '100',
@@ -103,7 +112,6 @@ const instructors = [
     courses_taught: ['101']
   },
 ]
-
 ```
 
 query = "one to many relationship"
@@ -117,49 +125,59 @@ terms = [
 url: "https://en.wikipedia.org/wiki/One-to-many_(data_model)"
 linked_url: "https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model"
 
+student_id: Uniquely identifies each student
+first_name: first name of student
+last_name: family name of student
+age: age in years of student
+grade: grade ranking or function of GPA
+course_id: ???
+courses: reference to Instructor.courses_taught:
+
+```js
 const students = [
-{
-student_id: "001",
-first_name: "John",
-last_name: "Smith",
-age: 18,
-grade: "A",
-course_id: "101",
-courses: [101, 102],
-},
-{
-student_id: "002",
-first_name: "Emily",
-last_name: "Johnson",
-age: 19,
-grade: "B",
-course_id: "102",
-courses: [101, 1],
-},
-{
-student_id: "003",
-first_name: "Michael",
-last_name: "Williams",
-age: 20,
-grade: "A",
-course_id: "103",
-},
+  {
+    student_id: "001",
+    first_name: "John",
+    last_name: "Smith",
+    age: 18,
+    grade: "A",
+    course_id: "101",
+    courses: [101, 102],
+  },
+  {
+    student_id: "002",
+    first_name: "Emily",
+    last_name: "Johnson",
+    age: 19,
+    grade: "B",
+    course_id: "102",
+    courses: [101, 1],
+  },
+  {
+    student_id: "003",
+    first_name: "Michael",
+    last_name: "Williams",
+    age: 20,
+    grade: "A",
+    course_id: "103",
+  },
 ];
 
 const courses = [
-{
-course_id: "103",
-course_name: "Mathematics",
-instructor: "Prof. Anderson",
-},
-{
-course_id: "102",
-course_name: "English",
-instructor: "Prof. Thompson",
-},
-{
-course_id: "103",
-course_name: "Science",
-instructor: "Prof. Parker",
-},
+  {
+    course_id: "103",
+    course_name: "Mathematics",
+    instructor: "Prof. Anderson",
+  },
+  {
+    course_id: "102",
+    course_name: "English",
+    instructor: "Prof. Thompson",
+  },
+  {
+    course_id: "103",
+    course_name: "Science",
+    instructor: "Prof. Parker",
+  },
 ];
+```

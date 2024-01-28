@@ -1,20 +1,81 @@
-.topics-list {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-rendering: optimizeLegibility;
+}
+
+.subnav {
   display: flex;
-  flex-direction: column;
-  width: 22%;
 }
 
-.topics-list li {
-  margin-left: 20px;
-  list-style: none;
-  border: solid 1px #fff;
-  width: auto;
-  text-align: justify;
-  background-color: #000;
-  margin-right: 2px;
-}
-
-.topics-list a {
+.subnav-list-item {
   text-decoration: none;
+  list-style-type: none;
+  margin-right: 20px;
+  font-size: 120%;
+  border: solid 1px #000;
+  /* background-color: #333; */
+  color: dodgerblue;
+  padding: 10px 40px 10px 40px; /* top left bottom right*/
+}
+
+.subnav-list-item:link,
+.subnav-list-item:visited,
+.subnav-list-item:hover,
+.subnav-list-item:active {
+  text-decoration: none;
+  color: dodgerblue;
+}
+
+.subnav-list-item a {
+  text-decoration: none;
+}
+
+/* course */
+
+.course-card {
+  border: solid 1px black;
+  width: 800px;
+}
+
+.course-card > * {
+  margin: 0px 0px 0px 5px;
+}
+
+.course-title {
+  font-size: 130%;
+  margin-bottom: 20px;
+  /* text-align: center; */
+  width: 365px;
+  font-size: 25px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.course-link {
+  /* text-decoration: none; */
+}
+
+.course-link:link,
+.course-link:visited {
+  text-decoration: none;
+  /* color: red; */
+}
+
+.course-tags {
+}
+
+.tag {
+  list-style-type: none;
+  display: inline-block;
+  font-size: 60%;
+  border: dashed 1px white;
+  border-radius: 8px;
+  margin-right: 5px;
+  padding: 2px;
+
   color: white;
+  background-color: palevioletred;
 }

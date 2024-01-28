@@ -24,13 +24,13 @@ export default function Login({ setToken }) {
       password,
     });
     // handle incorrect password here!
-    let _username = "desmond";
-    let _password = "1234";
+    let _username = "desmond"; // add database call here..
+    let _password = "1234"; // add database call here..
     if (username === _username && password === _password) {
       setToken(token);
       window.location.href = "http://localhost:3000/dashboard";
     } else {
-      alert("AUTH FAILED!");
+      alert("Either your usename or password is incorrect!");
       return;
     }
     // setToken(token);
