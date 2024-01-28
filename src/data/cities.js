@@ -1,4 +1,4 @@
-const cities = [
+export const cities = [
   {
     index: 0,
     city: "London",
@@ -22,4 +22,3 @@ const cities = [
   },
 ];
 
-export default cities;

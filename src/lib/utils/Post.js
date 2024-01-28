@@ -46,22 +46,21 @@ async function PostJSON(url, details) {
   });
 }
 
-const Get = () => {
-  let url = "";
-};
-const GetJSON = () => {};
-const Put = () => {};
-const PutJSON = () => {};
-const Delete = () => {};
-const DeleteJSON = () => {};
-// prettier-ignore
-export { 
-  Get,
-  GetJSON,
-  Post,
-  PostJSON,
-  Put,
-  PutJSON,
-  Delete,
-  DeleteJSON
- };
+export function Get() {}
+export function GetJSON() {}
+export function Put() {}
+export function PutJSON() {}
+export function Delete() {}
+export function DeleteJSON() {} // Not sure why, there's a need for a delte JSON specifically
+
+
+// export { 
+//   Get,
+//   GetJSON,
+//   Post,
+//   PostJSON,
+//   Put,
+//   PutJSON,
+//   Delete,
+//   DeleteJSON
+//  };

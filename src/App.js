@@ -56,7 +56,7 @@ let params = ["_id", "name", "dob", "loves", "weight", "gender", "vampires"];
 const ContactForm = () => {
   // https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_contact_form
   return (
-    <div class="container">
+    <div className="container">
       <form action="/action_page.php">
         <label for="fname">First Name</label>
         <input
