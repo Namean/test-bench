@@ -313,14 +313,13 @@ const MyComponent = ({ _color }) => {
 
 const App = () => {
   // return <TestBench />;
-  const [color, setColor] = useState("orange");
-  const [colorBuffer, setColorBuffer] = useState("");
+
   const [data, setData] = useState(unicorns2);
   const [index, setIndex] = useState(0);
 
   function rig() {
-    // let R = dataFetch();
-    let R = dataPOST();
+    let R = dataFetch();
+    // let R = dataPOST();
     // console.log(R);
 
     setTimeout(() => {
@@ -329,52 +328,11 @@ const App = () => {
     }, 1500);
   }
 
-  function increment() {
-    const limit = unicorns2.length - 1;
-    if (index === limit) {
-      // alert(`limit of index: ${limit} reached!!`);
-      return;
-    }
-    setIndex(index + 1);
-  }
-
-  function decrement() {
-    const limit = 0;
-    if (index === limit) {
-      // alert(`limit of index: ${limit} reached!!`);
-      return;
-    }
-    setIndex(index - 1);
-  }
-
   return (
     <>
-      {/* <h2
-        style={{
-          fontSize: "330%",
-          textAlign: "center",
-        }}
-      >
-        {`${index + 1} / ${unicorns2.length}`}
-      </h2> */}
-      {/* <Mongo data={[unicorns2[index]]} /> */}
       <Mongo data={data} />
 
-      {/* <MyComponent _color={color} /> */}
-
-      {/* <button onClick={() => dataPOST()}>POST</button> */}
       <button onClick={() => rig()}>FETCH</button>
-      {/* <button onClick={() => setColor(colorBuffer)}>click me</button>
-      <button onClick={() => increment()}>increment</button>
-      <button onClick={() => decrement()}>decrement</button> */}
-      {/* <input
-        onChange={(e) => setColorBuffer(e.target.value)}
-        type={"text"}
-        id="color"
-        name="color"
-      />
-      <MyForm />
-      <ContactForm /> */}
     </>
   );
 };
