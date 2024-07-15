@@ -1,0 +1,24 @@
+#!/bin/env bash
+
+export _user=$(whoami)
+export _repos="/home/$_user/Documents/src/repos"
+export _test_bench=$_repos/test_bench
+export _auth_api=$_repos/auth-api
+export _date_api=$_repos/data-api
+
+#echo "$_user"
+#echo "$_repos"
+#echo "$_test_bench"
+#echo "$_auth_api"
+#echo "$_date_api"
+
+echo "Starting auth-api server"
+node "$_auth_api/server.js"
+#pm2 start $(_auth_api)/server.js --name auth
+# pm2 start /Users/allspark/Documents/src/data-api/server.js --name data
+
+# cd /Users/allspark/Documents/src/test-bench
+
+# example: pm2 start --name dashboard npm -- start
+
+# pm2 start --name client npm -- start
