@@ -13,8 +13,8 @@ export _date_api=$_repos/data-api
 #echo "$_date_api"
 
 echo "Starting auth-api server"
-node "$_auth_api/server.js"
-#pm2 start $(_auth_api)/server.js --name auth
+# node "$_auth_api/server.js"
+pm2 start "$_auth_api/server.js" --name auth
 # pm2 start /Users/allspark/Documents/src/data-api/server.js --name data
 
 # cd /Users/allspark/Documents/src/test-bench
