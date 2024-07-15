@@ -12,24 +12,25 @@ import {
   NestingExample,
 } from "./test-bench/components/Courses/Courses.js";
 import "./test-bench/components/Login/Login.css";
-// import userToken from "/Users/allspark/Documents/src/test-bench/src/test-bench/useToken";
-import { useTokenLocalStorage } from "./test-bench/useToken";
-// function setToken(userToken) {
-//   sessionStorage.setItem("token", JSON.stringify(userToken));
-// }
-
-// function getToken() {
-//   const tokenString = sessionStorage.getItem("token");
-//   const userToken = JSON.parse(tokenString);
-//   return userToken?.token;
-// }
 import "./style.css";
+import userToken from "/Users/allspark/Documents/src/test-bench/src/test-bench/userToken";
+import { useTokenLocalStorage } from "./test-bench/userToken";
+
+function setToken(userToken) {
+  sessionStorage.setItem("token", JSON.stringify(userToken));
+}
+
+function getToken() {
+  const tokenString = sessionStorage.getItem("token");
+  const userToken = JSON.parse(tokenString);
+  return userToken?.token;
+}
 
 const TestBench = () => {
   // const [token, setToken] = useState();
   // const token = getToken();
 
-  console.log(micromark("## Hello, *world*!"));
+  // console.log(micromark("## Hello, *world*!"));
   const { token, setToken } = useTokenLocalStorage();
 
   if (!token) {
