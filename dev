@@ -3,7 +3,7 @@
 export _user=$(whoami)
 export _repos="/home/$_user/Documents/src/repos"
 export _test_bench=$_repos/test_bench
-export _auth_api=$_repos/auth-api
+export _auth_api="/home/desmond/Documents/src/my-repos/auth-api"
 export _date_api=$_repos/data-api
 
 #echo "$_user"

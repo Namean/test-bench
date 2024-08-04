@@ -3,8 +3,35 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 import "./Login.css";
 
+
+
+
+const APP_PORT = process.env.APP_PORT ? process.env.APP_PORT : "3000"
+const API_PORT = process.env.API_PORT ? process.env.AUTH_PORT : "8000";
+const IP = process.env.LOCAL_IP ? process.env.LOCAL_IP : "192.168.10.235";
+
+//console.log(APP_PORT);
+
+const protocol = "http";
+const __origin = `${protocol}://${IP}`;
+
+
+const auth = {
+  route: `${__origin}:${API_PORT}`,
+  login: `${__origin}:${API_PORT}`
+}
+
+const api = {
+  route: `${__origin}:${API_PORT}`
+}
+
+const app = {
+  dashboard: `${__origin}:${APP_PORT}/dashboard`
+}
+
+
 async function LoginUser(credentials) {
-  return fetch("http://localhost:8080/login", {
+  return fetch(auth.login, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -28,7 +55,7 @@ export default function Login({ setToken }) {
     let _password = "1234"; // add database call here..
     if (username === _username && password === _password) {
       setToken(token);
-      window.location.href = "http://localhost:3000/dashboard";
+      window.location.href = app.dashboard;
     } else {
       alert("Either your usename or password is incorrect!");
       return;

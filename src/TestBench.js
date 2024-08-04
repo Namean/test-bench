@@ -13,7 +13,11 @@ import {
 } from "./test-bench/components/Courses/Courses.js";
 import "./test-bench/components/Login/Login.css";
 import "./style.css";
-import userToken from "/Users/allspark/Documents/src/test-bench/src/test-bench/userToken";
+
+
+import { appRouter } from './lib/utils/routes.js';
+
+//import userToken from "/Users/allspark/Documents/src/test-bench/src/test-bench/userToken";
 import { useTokenLocalStorage } from "./test-bench/userToken";
 
 function setToken(userToken) {
@@ -51,7 +55,7 @@ const TestBench = () => {
             }}
           >
             <li>
-              <a className="nav-link" href="http://localhost:3000/dashboard">
+              <a className="nav-link" href={appRouter.dashboard}>
                 dashboard
               </a>
             </li>
@@ -113,7 +117,7 @@ const TestBench = () => {
           </Route>
         </Switch>
       </BrowserRouter>
-    </div>
+    </div >
   );
 };
 
