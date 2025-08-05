@@ -1,0 +1,7 @@
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/:root */
+
+:root {
+  --main-color: hotpink;
+  clay: #e5e5e5;
+  --pane-padding: 5px 42px;
+}

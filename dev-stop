@@ -1,3 +1,5 @@
+#!/usr/bin/env sh
+
 pm2 stop auth
 pm2 stop client
 pm2 stop data

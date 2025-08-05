@@ -1,4 +1,4 @@
-import CodeBlock from "./components/codeblock/CodeBlock.component.jsx";
+import CodeBlock from "./CodeBlock.component";
 
 const CodeBlockContainer = () => {
   const codeExample = `
@@ -6,11 +6,16 @@ const CodeBlockContainer = () => {
       return 'Hello, ' + name + '!';
     };`;
 
+  const codeExample2 = `
+    const fs = require('fs')
+    fs.readFileSync(fileName, { encoding: 'utf-8' })`;
+
   return (
     <>
       <div className="container">
         <div className="codeContainer">
           <CodeBlock code={codeExample} language="javascript" />
+          <CodeBlock code={codeExample2} language="javascript" />
         </div>
       </div>
     </>

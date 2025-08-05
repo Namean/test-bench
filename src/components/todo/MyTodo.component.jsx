@@ -60,7 +60,7 @@ const Todo = () => {
         placeholder="first_name"
         value={inputValueHandler("first_name")}
         name="first_name"
-        onFocus={() => setIsFocused("first_name")}
+        // onFocus={() => setIsFocused("first_name")}
         onChange={(e) => changeValueHandler(e, "first_name")}
       />
 
@@ -68,14 +68,14 @@ const Todo = () => {
         placeholder="last_name"
         value={inputValueHandler("last_name")}
         name="last_name"
-        onFocus={() => setIsFocused("last_name")}
+        // onFocus={() => setIsFocused("last_name")}
         onChange={(e) => changeValueHandler(e, "last_name")}
       />
       <button onClick={() => handler({ state })}>Todo Handler: </button>
       {/* <button onClick={() => setTotal(["asdf", ...total])}>click me!</button> */}
-      <MyTodo total={[...total]} />
+      {/* <MyTodo total={[...total]} /> */}
     </>
   );
 };
 
-export default MyTodo;
+export default Todo;

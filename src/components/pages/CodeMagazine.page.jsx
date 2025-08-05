@@ -42,7 +42,7 @@ const Article = () => {
         <p>Published on Monday, June 21st 2027</p>
         <img
           className="author-img"
-          src={`http://${state.ADDR}:${state.PORT}/laura-jones.jpg`}
+          // src={`http://${state.ADDR}:${state.PORT}/laura-jones.jpg`}
           alt="author"
         />
         <p className="post-info">

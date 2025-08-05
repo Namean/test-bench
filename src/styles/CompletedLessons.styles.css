@@ -1,0 +1,95 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-rendering: optimizeLegibility;
+}
+
+html {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 16px;
+}
+
+/* body {} */
+
+header {
+  padding: 40px;
+}
+
+/* SECTION */
+
+.section {
+  border: solid 1px black;
+}
+
+/* .section-header {
+        }
+  
+        .section-heading {
+        } */
+
+.section-content {
+  margin-top: 40px;
+}
+
+/* SUBSECTION */
+.subsection {
+  margin-top: 40px;
+
+  width: 400px;
+  width: 100%;
+  height: 500px;
+  line-height: 26px;
+  margin-bottom: 10px;
+
+  /* border-radius: 8px; */
+  /* margin: 0 auto; */
+}
+
+.upload-container {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  background-color: #ccc;
+  width: 100%;
+  width: 600px;
+  height: 300px;
+  border-radius: 2%;
+  font-family: sans-serif;
+  font-size: 0.9rem;
+}
+
+/* FORM */
+
+.my-form {
+}
+
+.my-form label {
+  display: flex;
+  flex-direction: row;
+  /*   justify-content: flex-end; */
+  text-align: right;
+  width: 400px;
+  width: 100%;
+  line-height: 26px;
+  margin-bottom: 10px;
+}
+
+.my-form input,
+.my-form textarea {
+  height: 20px;
+
+  flex: 0 0 70px;
+  /*   margin-left: 10px; */
+}
+
+/* input[type="checkbox"] {} */
+
+.form-checkbox {
+  position: relative;
+  left: 88px;
+  /*   left: -88px; */
+}

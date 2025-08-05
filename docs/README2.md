@@ -1,3 +1,105 @@
+- [Ionicons - Usage](https://ionic.io/ionicons/usage)
+
+had to install body-parser
+
+- [Express.js req.body undefined](https://stackoverflow.com/questions/9177049/express-js-req-body-undefined)
+
+- [MDN Using the Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
+
+- [How To Add Login Authentication to React Applications](https://www.digitalocean.com/community/tutorials/how-to-add-login-authentication-to-react-applications)
+
+```js
+async function postData(url = "", data = {}) {
+  // Default options are marked with *
+  const response = await fetch(url, {
+    method: "POST", // *GET, POST, PUT, DELETE, etc.
+    mode: "cors", // no-cors, *cors, same-origin
+    cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: "same-origin", // include, *same-origin, omit
+    headers: {
+      // "Content-Type": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    redirect: "follow", // manual, *follow, error
+    referrerPolicy: "no-referrer", // no-referrer, \*no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+    body: data, // body data type must match "Content-Type" header
+  });
+  //return response.json(); // parses JSON response into native JavaScript objects
+  return response;
+}
+
+postData("https://example.com/answer", { answer: 42 }).then((data) => {
+  console.log(data); // JSON data parsed by `data.json()` call
+});
+```
+
+- [How do I POST a x-www-form-urlencoded request using Fetch?](https://stackoverflow.com/questions/35325370/how-do-i-post-a-x-www-form-urlencoded-request-using-fetch)
+
+```js
+const GRANT_TYPE_PASSWORD = "password";
+
+var details = {
+  userName: "test@gmail.com",
+  password: "Password!",
+  grant_type: GRANT_TYPE_PASSWORD,
+  // grant_type: "password",
+};
+
+var formBody = [];
+for (var property in details) {
+  var encodedKey = encodeURIComponent(property);
+  var encodedValue = encodeURIComponent(details[property]);
+  formBody.push(encodedKey + "=" + encodedValue);
+}
+formBody = formBody.join("&");
+
+fetch("http://172.16.150.190:3001/user", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+  },
+  body: formBody,
+});
+```
+
+So now I need to put this into a React hook.
+
+```js
+// http://172.16.150.190:3001/user
+
+const use__X_FORM_URL_ENCODED = (url, details) => {
+  const [data, setData] = useState(null);
+
+  var formBody = [];
+  for (var property in details) {
+    // breakup into separate function
+    // encodeKey
+    var encodedKey = encodeURIComponent(property);
+
+    // breakup into separate function
+    // encodeValue
+    var encodedValue = encodeURIComponent(details[property]);
+
+    formBody.push(encodedKey + "=" + encodedValue);
+  }
+  formBody = formBody.join("&");
+  setData(formBody);
+
+  let http_methods = {
+    GET: "GET",
+    POST: "POST",
+  };
+
+  fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+    },
+    body: setData,
+  });
+};
+```
+
 query = "primary key vs foreign key"
 title = "Major Difference between Primary Key and Foreign Key"
 url = ["https://herovired.com/learning-hub/blogs/difference-between-primary-key-and-foreign-key/#:~:text=A%20primary%20key%20is%20a%20unique%20identifier%20for%20each%20record,primary%20key%20of%20another%20table.&text=Ensures%20uniqueness%20and%20data%20integrity%20within%20a%20single%20table."]

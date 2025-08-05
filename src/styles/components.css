@@ -1,0 +1,57 @@
+/*
+SPACING SYSTEM (px)
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+
+FONT SIZE SYSTEM (px)
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+*/
+
+.App {
+  /* width: 1920px; */
+  width: 800px;
+  width: 960px;
+}
+
+.header {
+  background-color: blue;
+}
+
+.section {
+  color: #000;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  /* max-width: 300px; */
+  width: 50%;
+}
+
+.sidebar-ul {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+/* ------------------------ */
+/* COMPONENT STYLES */
+/* ------------------------ */
+
+.omni-header {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 80px;
+  margin-top: 48px;
+}
+
+.omni-header-text-box {
+  align-self: center;
+}
+
+.omni-h1 {
+  margin-bottom: 24px;
+}
+
+.header-text {
+  margin-bottom: 24px;
+}

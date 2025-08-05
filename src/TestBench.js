@@ -14,11 +14,10 @@ import {
 import "./test-bench/components/Login/Login.css";
 import "./style.css";
 
-
-import { appRouter } from './lib/utils/routes.js';
+import { appRouter } from "./lib/utils/routes.js";
 
 //import userToken from "/Users/allspark/Documents/src/test-bench/src/test-bench/userToken";
-import { useTokenLocalStorage } from "./test-bench/userToken";
+// import { useTokenLocalStorage } from "./test-bench/userToken";
 
 function setToken(userToken) {
   sessionStorage.setItem("token", JSON.stringify(userToken));
@@ -117,7 +116,7 @@ const TestBench = () => {
           </Route>
         </Switch>
       </BrowserRouter>
-    </div >
+    </div>
   );
 };
 
